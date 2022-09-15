@@ -21,3 +21,25 @@
         }
     }
   
+
+    export const getAllOrdersReducers = (state = {}, action) => {
+        switch (action.type) {
+            case "GET_ORDERS_REQUEST":
+                return {
+                    loading: true,
+                    ...state,
+                }
+            case "GET_ORDERS_SUCCESS":
+                return {
+                    pizzas: action.payload,
+                    loading: false,
+                };
+            case "GET_ORDERS_FAILED":
+                return {
+                    error: action.payload,
+                    loading: false,
+                };
+            default:
+                return state;
+        }
+    }
