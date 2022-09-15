@@ -5,7 +5,7 @@ import { getAllPizzasReducers } from './reducers/PizzaReducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {cartReducers } from './reducers/CartReducers';
 import { registerUsersReducers, loginUsersReducers } from './reducers/UserReducers';
-
+import { placeOrderReducers } from './reducers/OrderReducers';
 
 
 const finalReducer = combineReducers({
@@ -13,6 +13,7 @@ const finalReducer = combineReducers({
     cartReducers: cartReducers,
     registerUsersReducers: registerUsersReducers,
     loginUsersReducers: loginUsersReducers,
+    placeOrderReducers: placeOrderReducers,
 })
 
     const initialState =  {

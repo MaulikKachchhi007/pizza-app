@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../actions/CartAction';
 import { removeFromItem } from '../actions/CartAction';
+import Error from '../components/messages/Error';
+import Success from '../components/messages/Success';
 import StripeCheckout from '../components/Payments/StripeCheckout';
 
 export default function CartScreen() {
@@ -12,9 +14,14 @@ export default function CartScreen() {
     let tax = (subTotals * 10 / 100);
     let total = subTotals - discount + tax;
     const dispatch = useDispatch();
+    const { success, error, loading} = useSelector((state) => state.placeOrderReducers);
+
     return (
         <div>
             <div className="row justify-content-center mt-5">
+            {loading && <loading />}
+                    {success && <Success success='Payment done successfully.' />}
+                    {error && <Error error='{error}' />}
                 <div className="col-md-6">
                     <h1>Pizza Cart</h1>
                     {
@@ -71,7 +78,7 @@ export default function CartScreen() {
                         </div>
                         <div className="card-footer">
                             <div className='d-flex justify-content-end'>
-                                <StripeCheckout totals={total} />
+                                <StripeCheckout amount={total} />
                             </div>
                         </div>
                     </div>
