@@ -14,12 +14,12 @@ export default function CartScreen() {
     let tax = (subTotals * 10 / 100);
     let total = subTotals - discount + tax;
     const dispatch = useDispatch();
-    const { success, error, loading} = useSelector((state) => state.placeOrderReducers);
+    const orderState = useSelector((state) => state.placeOrderReducers);
+    const  { success, error} = orderState;
 
     return (
         <div>
             <div className="row justify-content-center mt-5">
-            {loading && <loading />}
                     {success && <Success success='Payment done successfully.' />}
                     {error && <Error error='{error}' />}
                 <div className="col-md-6">

@@ -4,8 +4,8 @@ import iziToast from 'izitoast';
 export default function Success({ success }) {
     return (
         <div>
-            {iziToast.error({
-                title: 'Error',
+            {iziToast.success({
+                title: 'Success',
                 position: 'topRight',
                 timeout: 5000,
                 message: success

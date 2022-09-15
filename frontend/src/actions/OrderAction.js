@@ -8,7 +8,6 @@ export const  placeOrder = (token, subTotals) => async (dispatch, getState) => {
     try {
         const res = await axios.post('/api/v1/orders/placeorder', {token, subTotals,  currentUser, cartItems});
             dispatch({type: 'PLACE_ORDER_SUCCESS'});
-            console.log(res);
     } catch (error) {
         console.log(error);
         dispatch({type: 'PLACE_ORDER_FAILED'});
