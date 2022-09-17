@@ -4,12 +4,10 @@ const orderSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Name must be a required"],
-        unique: true,
     },
     email: {
         type: String,
         required: [true, "Email must be a required"],
-        unique: true,
     },
     userId: {
         type: String,

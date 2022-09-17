@@ -36,6 +36,7 @@ exports.placeOrders = async (req, res) => {
                 },
                 "transctionId": payment.source.id,
             });
+            console.log(newOrder);
             newOrder.save();
 
             res.send('Order Placed Successfully.');
@@ -44,6 +45,27 @@ exports.placeOrders = async (req, res) => {
         }
 
         // res.status(200).json(getPizza);
+        // res.send(getPizza);
+    } catch (error) {
+        res.status(422).json({
+            status: false,
+            message: error.message,
+        });
+    }
+}
+
+exports.getUserOrders = async (req, res) => {
+    try {
+        console.log(req.body);
+        const {  userId } =  req.body;
+        const orders = await Order.find({ userId: userId }).sort({_id: -1});
+        
+
+        res.status(200).json({
+            status: true,
+            message: 'User Orders Successfully.',
+            data: orders,
+        });
         // res.send(getPizza);
     } catch (error) {
         res.status(422).json({

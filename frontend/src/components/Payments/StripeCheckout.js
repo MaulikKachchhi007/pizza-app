@@ -1,10 +1,12 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import StripeCheckoutButton from 'react-stripe-checkout';
 import { placeOrder } from '../../actions/OrderAction';
 
-export default function StripeCheckout({amount}) {
-    const key= "pk_test_51JktLsSCqayQsMftFfdDMizG311rDG8tkQ7brfEtE3dqG5D9cv1TplVKMBcjZXMz9imF1iLpAtmZDzuVBRniuGUz00h01Iyc2a";
+export default function StripeCheckout({ amount }) {
+    const orderState = useSelector((state) => state.placeOrderReducers);
+    const { loading, error, success } = orderState;
+    const key = "pk_test_51JktLsSCqayQsMftFfdDMizG311rDG8tkQ7brfEtE3dqG5D9cv1TplVKMBcjZXMz9imF1iLpAtmZDzuVBRniuGUz00h01Iyc2a";
     const dispatch = useDispatch();
 
     function tokenHandler(token) {
@@ -13,15 +15,15 @@ export default function StripeCheckout({amount}) {
     }
     return (
         <div>
-            <StripeCheckoutButton 
-            amount={amount*100} 
-            stripeKey={key} 
-            shippingAddress 
-            token={tokenHandler} 
-            currency={'INR'}>
-                <button className='btn btn-danger btn-sm ms-auto'>CHECK OUT</button> 
-            </StripeCheckoutButton> 
+
+            <StripeCheckoutButton
+                amount={amount * 100}
+                stripeKey={key}
+                shippingAddress
+                token={tokenHandler}
+                currency={'INR'}>
+                <button className='btn btn-danger btn-sm ms-auto'>CHECK OUT</button>
+            </StripeCheckoutButton>
         </div>
     )
 }
- 

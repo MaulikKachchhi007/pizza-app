@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPizzas } from '../actions/PizzaAction';
+import Filter from '../components/Filter';
 import Error from '../components/messages/Error';
 import Loader from '../components/messages/Loader';
 import Pizza from '../components/Pizza';
@@ -17,6 +18,7 @@ function HomeScreen() {
 
   return (
     <div>
+      <Filter />
       <div className="row justify-content-center">
         {loading ? (<Loader />)
           : error

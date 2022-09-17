@@ -31,7 +31,7 @@
                 }
             case "GET_ORDERS_SUCCESS":
                 return {
-                    pizzas: action.payload,
+                    orders: action.payload,
                     loading: false,
                 };
             case "GET_ORDERS_FAILED":
