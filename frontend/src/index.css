@@ -24,3 +24,26 @@ select {
   box-shadow: none;
   border-color: black!important;
 }
+
+.admin-navbar {
+  padding: 10px;
+  background-color: rgb(1, 1, 77);
+}
+
+.admin-navbar li {
+  list-style-type: none;
+  text-decoration: none;
+  display: inline;
+}
+
+.admin-navbar li  a {
+  text-decoration: none;
+  pointer-events: fill;
+  margin: 1px;
+  padding: 12px;
+  color: white !important;
+}
+
+.admin-navbar li  a:hover {
+  background-color: rgb(199, 91, 28);
+}

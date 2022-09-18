@@ -10,21 +10,21 @@ import CartScreen from './screens/CartScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import LoginScreen from './screens/LoginScreen';
 import OrderScreen from './screens/OrderScreen';
+import Index from './screens/Admin/Index';
 
 function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/cart" element={<CartScreen />} />
-          <Route path="/register" element={<RegisterScreen />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/orders" element={<OrderScreen />} />
-        </Routes>
-      </BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<HomeScreen />} />
+        <Route exact path="/cart" element={<CartScreen />} />
+        <Route exact path="/register" element={<RegisterScreen />} />
+        <Route exact path="/login" element={<LoginScreen />} />
+        <Route exact path="/orders" element={<OrderScreen />} />
+        <Route exact path="/Admin" element={<Index />} />
+      </Routes>
     </div>
   );
 }
